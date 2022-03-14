@@ -1,0 +1,17 @@
+.candleMakers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  }
+    
+  .candleMaker {
+      flex-basis: 28%;
+      margin: 1rem;
+      border: 20px solid goldenrod;
+      border-radius: 25px;
+      background: purple;
+      padding: 20px; 
+      width: 100px;
+      height: 100px;
+  }
