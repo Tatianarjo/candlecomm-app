@@ -1,25 +1,38 @@
 import React from "react"
-// import { Link } from "react-router-dom"
+import { Link, useHistory} from "react-router-dom"
 import "./NavBar.css"
 
-// export const NavBar = (props) => {
-//     return (
-//         <ul className="navbar">
-//              {/* <li className="navbar__item">
-//                 <Link className="navbar__link" to="/home">Home</Link>
-//             </li>  */}
-//              <li className="navbar__item active">
-//                 <Link className="navbar__link" to="/">CandleComm</Link>
-//             </li>
-//             <li className="navbar__item">
-//                 <Link className="navbar__link" to="/motivations">Motivation</Link>
-//             </li>
-//             <li className="navbar__item">
-//                 <Link className="navbar__link" to="/moodTrackers">Mood Tracker</Link>
-//             </li>
-//             <li className="navbar__item">
-//                 <Link className="navbar__link" to="/supports">Support</Link>
-//             </li>
-//         </ul>
-//     )
-// }
+export const NavBar = (props) => { 
+    const history = useHistory()
+    const handleLogOut = () => {
+        localStorage.removeItem("lu_token")
+        history.push("/login")
+    }
+
+    return (
+        <ul className="navbar">
+             {/* <li className="navbar__item">
+                <Link className="navbar__link" to="/home">Home</Link>
+            </li>  */}
+             <li className="navbar__item active">
+                <Link className="navbar__link" to="/">Sobrli</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/motivations">Motivation</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/candleMakers">Make Your Candle</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/supports">Support</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/calendars">Calendar</Link>
+            </li> 
+            <li className="navbar__item">
+                <button onClick={handleLogOut}>Log Out</button>
+                {/* <Link className="navbar__link" to="/login">LogOut</Link> */}
+            </li> 
+        </ul>
+    )
+}
