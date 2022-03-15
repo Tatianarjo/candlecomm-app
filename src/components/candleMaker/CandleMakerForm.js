@@ -10,9 +10,8 @@ export const CandleMakerForm = () => {
 
     const [candleMaker, setCandleMaker] = useState({
         candle_name: "",
-        scent: "",
-        profileId: 0,
-        jar_colorId:"",  
+        scentId: 1,
+        jar_colorId:1,  
     });
 
     const history = useHistory();
@@ -75,6 +74,27 @@ export const CandleMakerForm = () => {
                     </div>
             </fieldset>
 
+{/* 
+            <fieldset>
+<div className="form-group">
+  <label htmlFor="jar_colorId">Jar Color: </label>
+  <select
+    name="jar_colorId"
+    className="form-control"
+    value={candleMaker.jar_colorId}
+    onChange={changeEventState}
+  >
+    <option value="0">Select Your Jar Color</option>
+    {jar_colors.map((jar_color) => {
+      
+      return (
+      <option value={jar_color.id} key={jar_color.id}>{jar_color.color}</option>
+    )}
+    )}
+  </select>
+</div>
+</fieldset> */}
+
                   
             <fieldset>
                 <div className="form-group">
@@ -91,10 +111,13 @@ export const CandleMakerForm = () => {
             </fieldset>
 
                   <button className="btn btn-primary" onClick={handleClickSaveCandleMaker}>
-                      Save Mood
+                      Save Your Candle
                   </button>
 
                 
         </form>
     )
 }
+
+
+// above code for the jar colors
