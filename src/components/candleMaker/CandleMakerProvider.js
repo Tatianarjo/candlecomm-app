@@ -8,7 +8,7 @@ export const CandleMakerProvider = (props) => {
     const [candleMakers, setCandleMakers] = useState([])
 
     const getCandleMakers = () => {
-        return fetch("http://localhost:8000/candleMakers", {
+        return fetch("http://localhost:8000/candles", {
           headers: {
             Authorization: `Token ${localStorage.getItem("lu_token")}`,
           },
@@ -18,7 +18,7 @@ export const CandleMakerProvider = (props) => {
       };
 
     const addCandleMaker = candleMakerObj => {
-        return fetch("http://localhost:8088/candleMakers", {
+        return fetch("http://localhost:8088/candles", {
             method: "POST",
             headers: {
                 Authorization: `Token ${localStorage.getItem("lu_token")}`,

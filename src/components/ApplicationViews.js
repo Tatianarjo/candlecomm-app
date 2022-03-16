@@ -27,10 +27,10 @@ export const ApplicationViews = () => {
                 </Route>
 
                 <CandleMakerProvider>
-                    <Route exact path="/candleMakers">
+                    <Route exact path="/candles">
                         <CandleMakerList />
                     </Route>
-                    <Route exact path="/candleMakers/create">
+                    <Route exact path="/candles/create">
                         <CandleMakerForm />
                     </Route>
                 </CandleMakerProvider>
