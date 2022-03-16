@@ -46,7 +46,7 @@ export const CandleMakerForm = () => {
                 // jar_colorId: jar_colorId
             }
             addCandleMaker(newCandleMaker)
-                .then(() => history.push("/candleMakers"))
+                .then(() => history.push("/candles"))
         }
     }
 

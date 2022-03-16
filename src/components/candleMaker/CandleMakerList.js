@@ -11,7 +11,6 @@ export const CandleMakerList = () => {
 
   //useEffect - reach out to the world for something
   useEffect(() => {
-    console.log("CandleMakerList: useEffect - getCandleMakers")
     getCandleMakers()
   }, [])
 
@@ -20,7 +19,7 @@ export const CandleMakerList = () => {
       <>
       <h2>CandleMaker</h2>
       <button onClick={
-          () => history.push("/candleMakers/create")
+          () => history.push("/candles/create")
       }>
           Create Your Candle
       </button>
@@ -33,7 +32,7 @@ export const CandleMakerList = () => {
                 Name: { candleMaker.candle_name }
               </div>
               <div className="candleMaker__yourWhy">
-                Your Why: { candleMaker.scent }
+                Your Why: { candleMaker.scent.fragrance }
               </div>
              
             </div>
