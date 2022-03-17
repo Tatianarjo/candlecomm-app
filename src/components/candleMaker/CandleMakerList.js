@@ -14,6 +14,10 @@ export const CandleMakerList = () => {
     getCandleMakers()
   }, [])
 
+  useEffect(() => {
+   
+  }, [candleMakers])
+
 
   return (
       <>
@@ -23,23 +27,33 @@ export const CandleMakerList = () => {
       }>
           Create Your Candle
       </button>
-    <div className="candleMakers">
+    {candleMakers.length > 0 && <div className="candleMakers">
       {
-        candleMakers.map(candleMaker => {
+        candleMakers?.map(candleMaker => {
           return (
-            <div className="candleMaker" id={`candleMaker--${candleMaker.id}`}>
+            <div key={candleMaker.id}className="candleMaker" id={`candleMaker--${candleMaker.id}`}>
               <div className="candleMaker__feeling">
                 Name: { candleMaker.candle_name }
               </div>
               <div className="candleMaker__yourWhy">
-                Your Why: { candleMaker.scent.fragrance }
+                Scent: { candleMaker.scent.fragrance }
               </div>
+
+              <div className="candleMaker__yourWhy">
+                Jar Color: { candleMaker.jar_color.color }
+              </div>
+              {/* <div className="candleMaker__yourWhy">
+                Jar Color: { candleMaker.upload.file_url }
+              </div> */}
              
             </div>
           )
         })
       }
-    </div>
+    </div>}
     </>
   )
     }
+
+
+    //finish out and put the backend here 

@@ -4,7 +4,7 @@ import "./CandleMaker.css"
 import { useHistory } from 'react-router-dom'
 
 export const CandleMakerForm = () => {
-    const { addCandleMaker, getCandleMakers } = useContext(CandleMakerContext)
+    const { addCandleMaker, getCandleMakers, scents, getScents } = useContext(CandleMakerContext)
 
 
 
@@ -18,7 +18,7 @@ export const CandleMakerForm = () => {
 
     useEffect(() => {
         getCandleMakers()
-    }, [])
+    }, [scents])
 
     const handleControlledInputChange = (event) => {
         const newCandleMaker = { ...candleMaker }
@@ -46,7 +46,7 @@ export const CandleMakerForm = () => {
                 // jar_colorId: jar_colorId
             }
             addCandleMaker(newCandleMaker)
-                .then(() => history.push("/candles"))
+                .then(() => history.push("/candleMakers"))
         }
     }
 
@@ -60,55 +60,38 @@ export const CandleMakerForm = () => {
             </div>
             </fieldset> 
 
+            
+           {scents.length> 0 &&
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Create Your Scent</label>
                     <select name="scent" id="scent" className="form-group" onChange={handleControlledInputChange}>
-                        <option value="vanillabreeze">Vanilla Breeze</option>
-                        <option value="morroccancashmere">Morroccan Cashmere</option>
-                        <option value="peachcardamon">Peach Cardamon</option>
-                        <option value="daisymusk">Daisy Musk</option>
-                        <option value="cucumbermelon">Cucumber Melon</option>
-                        <option value="cedarwood">Cedar Wood</option>
+                        {scents.map((scent)=> {
+                            return <option key={scent.fragrance}value={scent.fragrance}>{scent.fragrance}</option>
+                        })}
+                        
+                        
                     </select>
                     </div>
-            </fieldset>
+            </fieldset>}
 
-{/* 
-            <fieldset>
-<div className="form-group">
-  <label htmlFor="jar_colorId">Jar Color: </label>
-  <select
-    name="jar_colorId"
-    className="form-control"
-    value={candleMaker.jar_colorId}
-    onChange={changeEventState}
-  >
-    <option value="0">Select Your Jar Color</option>
-    {jar_colors.map((jar_color) => {
-      
-      return (
-      <option value={jar_color.id} key={jar_color.id}>{jar_color.color}</option>
-    )}
-    )}
-  </select>
-</div>
-</fieldset> */}
+
+
+           
+
+        
 
                   
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Jar Color</label>
-                    <select name="scent" id="scent" className="form-group" onChange={handleControlledInputChange}>
-                        <option value="pink">Pink</option>
-                        <option value="white">White</option>
-                        <option value="purple">Purple</option>
-                        <option value="blue">Blue</option>
-                        <option value="black">Black</option>
-                        <option value="yellow">Yellow</option>
+                    <select name="color" id="color" className="form-group" onChange={handleControlledInputChange}>
+                            {jar_colors.map((color)=> {
+                            return <option value={color.color}>{color.color}</option>
+                        })}
                     </select>
                     </div>
-            </fieldset>
+            </fieldset> */}
 
                   <button className="btn btn-primary" onClick={handleClickSaveCandleMaker}>
                       Save Your Candle
@@ -120,4 +103,3 @@ export const CandleMakerForm = () => {
 }
 
 
-// above code for the jar colors
