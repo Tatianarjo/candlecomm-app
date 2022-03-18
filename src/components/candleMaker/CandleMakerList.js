@@ -35,11 +35,11 @@ export const CandleMakerList = () => {
               <div className="candleMaker__feeling">
                 Name: { candleMaker.candle_name }
               </div>
-              <div className="candleMaker__yourWhy">
+              <div className="candleMaker__scnet">
                 Scent: { candleMaker.scent.fragrance }
               </div>
 
-              <div className="candleMaker__yourWhy">
+              <div className="candleMaker__jar">
                 Jar Color: { candleMaker.jar_color.color }
               </div>
               {/* <div className="candleMaker__yourWhy">
