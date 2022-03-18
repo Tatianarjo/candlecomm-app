@@ -7,6 +7,7 @@ export const CandleMakerContext = createContext()
 export const CandleMakerProvider = (props) => {
     const [candleMakers, setCandleMakers] = useState([])
     const [scents, setScents] = useState([])
+    const [jar_colors, setJarColors] = useState([])
     
 
     const getCandleMakers = () => {
@@ -56,6 +57,18 @@ export const CandleMakerProvider = (props) => {
 
               console.log(candleMakersData)
           };
+
+          const getJarColors = () => {
+            const candleMakersData = 
+            ( fetch("http://localhost:8000/jarcolors", {
+              headers: {
+                Authorization: `Token ${localStorage.getItem("lu_token")}`,
+              },
+            })
+              .then((response) => response.json()))
+              .then(setJarColors)
+
+          };
     /*
         You return a context provider which has the
         `candleMakers` state, `getcandleMakers` function,
@@ -65,10 +78,11 @@ export const CandleMakerProvider = (props) => {
    useEffect(() => {
        getScents()
        getCandleMakers()
+       getJarColors()
    },[])
     return (
         <CandleMakerContext.Provider value={{
-            candleMakers, getCandleMakers, addCandleMaker, getCandleMakerById, getScents, scents
+            candleMakers, getCandleMakers, addCandleMaker, getCandleMakerById, getScents, scents, jar_colors, getJarColors
         }}>
             {props.children}
         </CandleMakerContext.Provider>
