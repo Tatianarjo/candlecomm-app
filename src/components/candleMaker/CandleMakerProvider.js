@@ -22,16 +22,16 @@ export const CandleMakerProvider = (props) => {
           
       };
 
-    const addCandleMaker = candleMakerObj => {
-        return fetch("http://localhost:8088/candles", {
+    const addCandleMaker = (candleMaker) => {
+        return fetch("http://localhost:8000/candles", {
             method: "POST",
             headers: {
                 Authorization: `Token ${localStorage.getItem("lu_token")}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(candleMakerObj)
+            body: JSON.stringify(candleMaker)
         })
-        .then(getCandleMakers)
+        .then((response) => response.json()) 
     }
 
     const getCandleMakerById = (id) => {
@@ -59,7 +59,6 @@ export const CandleMakerProvider = (props) => {
           };
 
           const getJarColors = () => {
-            const candleMakersData = 
             ( fetch("http://localhost:8000/jarcolors", {
               headers: {
                 Authorization: `Token ${localStorage.getItem("lu_token")}`,
