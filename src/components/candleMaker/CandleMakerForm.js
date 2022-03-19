@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CandleMakerContext } from "./CandleMakerProvider";
 import "./CandleMaker.css";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const CandleMakerForm = () => {
   const {
@@ -15,8 +16,8 @@ export const CandleMakerForm = () => {
 
   const [candleMaker, setCandleMaker] = useState({
     candle_name: "",
-    scentId: 1,
-    jar_colorId: 1,
+    scent: 1,
+    jar_color: 1,
   });
 
   const history = useHistory();
@@ -32,13 +33,12 @@ export const CandleMakerForm = () => {
 
     setCandleMaker(newCandleMaker);
   };
-
+  const profile = useParams();
   const handleClickSaveCandleMaker = (event) => {
-    const timestamp = new Date().toLocaleDateString();
 
     event.preventDefault();
 
-    const profileId = parseInt(localStorage.getItem("lu_token"));
+    
 
     if (candleMaker.candle_name === "" || candleMaker.scent === "") {
       window.alert("Please enter information");
@@ -46,10 +46,10 @@ export const CandleMakerForm = () => {
       const newCandleMaker = {
         candle_name: candleMaker.candle_name,
         scent: candleMaker.scent,
-        profileId: profileId,
-        jar_color: candleMaker.jar_colorId,
+        profile: candleMaker.User,
+        jar_color: candleMaker.jar_color,
       };
-      addCandleMaker(newCandleMaker).then(() => history.push("/candleMakers"));
+      addCandleMaker(newCandleMaker).then(() => history.push("/candles"));
     }
   };
 
@@ -84,7 +84,7 @@ export const CandleMakerForm = () => {
             >
               {scents.map((scent) => {
                 return (
-                  <option key={scent.fragrance} value={scent.fragrance}>
+                  <option key={scent.fragrance} value={scent.id}>
                     {scent.fragrance}
                   </option>
                 );
@@ -99,22 +99,38 @@ export const CandleMakerForm = () => {
           <div className="form-group">
             <label htmlFor="name">Jar Color</label>
             <select
-              name="color"
-              id="color"
+              name="jar_color"
+              id="jar_color"
               className="form-group"
               onChange={handleControlledInputChange}
             >
-              {jar_colors.map((color) => {
-                return <option value={color.color}>{color.color}</option>;
+              {jar_colors.map((jar_color) => {
+                return <option key={jar_color.color} value={jar_color.id}>{jar_color.color}</option>;
               })}
             </select>
           </div>
         </fieldset>
       )}
 
-      <button className="btn btn-primary" onClick={handleClickSaveCandleMaker}>
+<button className='category_edit--save' onClick={ handleClickSaveCandleMaker}>Save Your Candle</button>
+<button className='category_edit--cancel' onClick={() => {history.push('/categories')}}>Edit/Cancel</button>
+
+      {/* <button className="btn btn-primary" onClick={handleClickSaveCandleMaker}>
         Save Your Candle
-      </button>
+      </button> */}
     </form>
+    
   );
 };
+
+
+//                Things to do
+
+
+// Save Candle - Edit Candle - Delete Candle - 
+// Get User info to show bts
+// Details page of candle
+// Add upload of photo
+// Design home page
+// Add checkbox for candle scents - put 
+//
