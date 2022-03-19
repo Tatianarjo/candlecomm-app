@@ -12,10 +12,16 @@ export const CandleMakerForm = () => {
     getScents,
     jar_colors,
     getJarColors,
-    deleteCandleMakerById
+    deleteCandleMakerById,
+    editCandleMakerById
   } = useContext(CandleMakerContext);
 
+  const  { id } = useParams();
+  console.log(id)
+
+
   const [candleMaker, setCandleMaker] = useState({
+     
     candle_name: "",
     scent: 1,
     jar_color: 1,
@@ -38,10 +44,23 @@ export const CandleMakerForm = () => {
   const handleClickSaveCandleMaker = (event) => {
 
     event.preventDefault();
+    if (id) {
+        if (candleMaker.candle_name === "" || candleMaker.scent === "") {
+            window.alert("Please enter information");
+          } else {
+            const newCandleMaker = {
+                id: id,
+              candle_name: candleMaker.candle_name,
+              scent: candleMaker.scent,
+              profile: candleMaker.User,
+              jar_color: candleMaker.jar_color,
+            };
+            editCandleMakerById(newCandleMaker).then(() => history.push("/candles"));
+          } 
 
-    
-
-    if (candleMaker.candle_name === "" || candleMaker.scent === "") {
+    }  else {
+        //create new candle
+        if (candleMaker.candle_name === "" || candleMaker.scent === "") {
       window.alert("Please enter information");
     } else {
       const newCandleMaker = {
@@ -51,8 +70,14 @@ export const CandleMakerForm = () => {
         jar_color: candleMaker.jar_color,
       };
       addCandleMaker(newCandleMaker).then(() => history.push("/candles"));
+    } 
     }
+    
+
+   
   };
+
+  
 
   return (
     <form className="candleMakerForm">
@@ -114,7 +139,7 @@ export const CandleMakerForm = () => {
       )}
 
 <button className='category_edit--save' onClick={ handleClickSaveCandleMaker}>Save Your Candle</button>
-<button className='category_edit--cancel' onClick={() => {history.push('/categories')}}>Edit/Cancel</button>
+{/* <button className='category_edit--cancel' onClick={() => {history.push('/candles')}}>Edit/Cancel</button> */}
 
       {/* <button className="btn btn-primary" onClick={handleClickSaveCandleMaker}>
         Save Your Candle
@@ -135,3 +160,5 @@ export const CandleMakerForm = () => {
 // Design home page
 // Add checkbox for candle scents - put 
 //
+
+

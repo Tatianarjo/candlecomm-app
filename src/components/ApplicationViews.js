@@ -33,6 +33,9 @@ export const ApplicationViews = () => {
                     <Route exact path="/candles/create">
                         <CandleMakerForm />
                     </Route>
+                    <Route path="/candles/edit/:id">
+                        <CandleMakerForm />
+                    </Route>
                 </CandleMakerProvider>
 
                 {/* <SupportBoardProvider>
