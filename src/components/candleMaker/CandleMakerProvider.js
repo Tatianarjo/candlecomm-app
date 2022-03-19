@@ -34,6 +34,16 @@ export const CandleMakerProvider = (props) => {
         .then((response) => response.json()) 
     }
 
+    const deleteCandleMakerById = (id) => {
+        return fetch(`http://localhost:8000/candles/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Token ${localStorage.getItem("lu_token")}`,
+            "Content-Type": "application/json",
+          },
+        }).then(getCandleMakers);
+      };
+
     const getCandleMakerById = (id) => {
         const candleMakersData = 
         ( fetch(`http://localhost:8000/candles/${id}`, {
@@ -81,7 +91,7 @@ export const CandleMakerProvider = (props) => {
    },[])
     return (
         <CandleMakerContext.Provider value={{
-            candleMakers, getCandleMakers, addCandleMaker, getCandleMakerById, getScents, scents, jar_colors, getJarColors
+            candleMakers, getCandleMakers, addCandleMaker, getCandleMakerById, getScents, scents, jar_colors, getJarColors, deleteCandleMakerById
         }}>
             {props.children}
         </CandleMakerContext.Provider>

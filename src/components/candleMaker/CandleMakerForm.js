@@ -12,6 +12,7 @@ export const CandleMakerForm = () => {
     getScents,
     jar_colors,
     getJarColors,
+    deleteCandleMakerById
   } = useContext(CandleMakerContext);
 
   const [candleMaker, setCandleMaker] = useState({
@@ -127,7 +128,7 @@ export const CandleMakerForm = () => {
 //                Things to do
 
 
-// Save Candle - Edit Candle - Delete Candle - 
+// Edit Candle  - 
 // Get User info to show bts
 // Details page of candle
 // Add upload of photo

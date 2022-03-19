@@ -5,10 +5,13 @@ import { useHistory } from 'react-router-dom'
 
 export const CandleMakerList = () => {
 
-  const { candleMakers, getCandleMakers } = useContext(CandleMakerContext)
+  const { candleMakers, getCandleMakers, deleteCandleMakerById } = useContext(CandleMakerContext)
 
   const history = useHistory()
-
+  const handleDelete = (e) => {
+    console.log(e.target.id)
+    deleteCandleMakerById(e.target.id)
+  } 
   //useEffect - reach out to the world for something
   useEffect(() => {
     getCandleMakers()
@@ -35,7 +38,7 @@ export const CandleMakerList = () => {
               <div className="candleMaker__feeling">
                 Name: { candleMaker.candle_name }
               </div>
-              <div className="candleMaker__scnet">
+              <div className="candleMaker__scent">
                 Scent: { candleMaker.scent.fragrance }
               </div>
 
@@ -45,8 +48,16 @@ export const CandleMakerList = () => {
               {/* <div className="candleMaker__yourWhy">
                 Jar Color: { candleMaker.upload.file_url }
               </div> */}
-             
+             <div>
+             <div id= {candleMaker.id} className= "button" onClick={
+              (e) => handleDelete(e)
+              }>Delete Candle</div>
+                            </div>
+
+
             </div>
+
+            
           )
         })
       }
