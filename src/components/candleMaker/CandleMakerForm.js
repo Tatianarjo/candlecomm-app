@@ -59,7 +59,7 @@ console.log(candleMaker.scents)
             const editCandleMaker = {
                 id: id,
               candle_name: candleMaker.candle_name,
-              scents: candleMaker.scents,
+              scent: candleMaker.scents,
               profile: candleMaker.User,
               jar_color: candleMaker.jar_color,
             };
@@ -73,7 +73,7 @@ console.log(candleMaker.scents)
     } else {
       const newCandleMaker = {
         candle_name: candleMaker.candle_name,
-        scents: candleMaker.scents,
+        scent: candleMaker.scents,
         profile: candleMaker.User,
         jar_color: candleMaker.jar_color,
       };
