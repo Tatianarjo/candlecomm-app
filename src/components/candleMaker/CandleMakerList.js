@@ -34,7 +34,7 @@ export const CandleMakerList = () => {
                 className="candleMaker"
                 id={`candleMaker--${candleMaker.id}`}
               >
-                <div className="candleMaker__feeling">
+                <div className="candleMaker__name">
                   Name: {candleMaker.candle_name}
                 </div>
                 <div className="candleMaker__scent">

@@ -4,6 +4,8 @@ import { CandleMaker } from "./candleMaker/CandleMaker"
 import { CandleMakerList } from "./candleMaker/CandleMakerList"
 import { CandleMakerContext, CandleMakerProvider } from "./candleMaker/CandleMakerProvider"
 import { CandleMakerForm } from "./candleMaker/CandleMakerForm"
+import { Home } from "./home/Home"
+
 // import { SupportBoard } from "./supportBoard/SupportBoard"
 // import { SupportBoardList } from "./supportBoard/SupportBoardList"
 // import { SupportBoardForm } from "./supportBoard/SupportBoardForm"
@@ -21,7 +23,7 @@ export const ApplicationViews = () => {
             {/* Render the location list when http://localhost:3000/ */}
             {/* // <moodTrackerProvider> */}
                 <Route exact path="/">
-                    {/* <Home /> */}
+                    <Home />
                     {/* <MoodTracker />
                     <SupportBoard /> */}
                 </Route>

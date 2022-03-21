@@ -15,20 +15,16 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/home">Home</Link>
             </li>  */}
              <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Sobrli</Link>
+                <Link className="navbar__link" to="/">HOME!</Link>
             </li>
-            <li className="navbar__item">
-                <Link className="navbar__link" to="/motivations">Motivation</Link>
-            </li>
+           
             <li className="navbar__item">
                 <Link className="navbar__link" to="/candles">Make Your Candle</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/supports">Support</Link>
             </li>
-            <li className="navbar__item">
-                <Link className="navbar__link" to="/calendars">Calendar</Link>
-            </li> 
+            
             <li className="navbar__item">
                 <button onClick={handleLogOut}>Log Out</button>
                 {/* <Link className="navbar__link" to="/login">LogOut</Link> */}

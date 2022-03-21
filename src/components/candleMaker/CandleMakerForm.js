@@ -23,8 +23,8 @@ export const CandleMakerForm = () => {
   const [candleMaker, setCandleMaker] = useState({
      
     candle_name: "",
-    scent: 1,
-    jar_color: 1,
+    scents: [],
+    jar_color: "",
   });
 
   const history = useHistory();
@@ -33,11 +33,19 @@ export const CandleMakerForm = () => {
     getCandleMakers();
   }, [scents, jar_colors]);
 
+  
+
   const handleControlledInputChange = (event) => {
+   
     const newCandleMaker = { ...candleMaker };
-
-    newCandleMaker[event.target.id] = event.target.value;
-
+    
+    if (event.target.name === "scents") {
+        newCandleMaker[event.target.name]= Array.from(event.target.options).filter(o => o.selected).map(o => o.value)
+    } else {
+        newCandleMaker[event.target.id] = event.target.value;
+    }
+   
+console.log(candleMaker.scents)
     setCandleMaker(newCandleMaker);
   };
   const profile = useParams();
@@ -45,27 +53,27 @@ export const CandleMakerForm = () => {
 
     event.preventDefault();
     if (id) {
-        if (candleMaker.candle_name === "" || candleMaker.scent === "") {
+        if (candleMaker.candle_name === "" || candleMaker.scents.length !== 0) {
             window.alert("Please enter information");
           } else {
-            const newCandleMaker = {
+            const editCandleMaker = {
                 id: id,
               candle_name: candleMaker.candle_name,
-              scent: candleMaker.scent,
+              scents: candleMaker.scents,
               profile: candleMaker.User,
               jar_color: candleMaker.jar_color,
             };
-            editCandleMakerById(newCandleMaker).then(() => history.push("/candles"));
+            editCandleMakerById(editCandleMaker).then(() => history.push("/candles"));
           } 
 
     }  else {
         //create new candle
-        if (candleMaker.candle_name === "" || candleMaker.scent === "") {
+        if (candleMaker.candle_name === "" || candleMaker.scents === "") {
       window.alert("Please enter information");
     } else {
       const newCandleMaker = {
         candle_name: candleMaker.candle_name,
-        scent: candleMaker.scent,
+        scents: candleMaker.scents,
         profile: candleMaker.User,
         jar_color: candleMaker.jar_color,
       };
@@ -102,10 +110,11 @@ export const CandleMakerForm = () => {
         <fieldset>
           <div className="form-group">
             <label htmlFor="name">Create Your Scent</label>
-            <select
-              name="scent"
-              id="scent"
-              className="form-group"
+            <select multiple={true}
+              name="scents"
+              id="scents"
+              className="form-group" 
+              value={candleMaker.scents}
               onChange={handleControlledInputChange}
             >
               {scents.map((scent) => {
