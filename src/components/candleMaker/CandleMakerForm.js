@@ -53,7 +53,7 @@ console.log(candleMaker.scents)
 
     event.preventDefault();
     if (id) {
-        if (candleMaker.candle_name === "" || candleMaker.scents.length !== 0) {
+        if (candleMaker.candle_name === "" || candleMaker.scents.length == 0) {
             window.alert("Please enter information");
           } else {
             const editCandleMaker = {
@@ -68,7 +68,8 @@ console.log(candleMaker.scents)
 
     }  else {
         //create new candle
-        if (candleMaker.candle_name === "" || candleMaker.scents === "") {
+        
+        if (candleMaker.candle_name === "" || candleMaker.scents.length == 0) {
       window.alert("Please enter information");
     } else {
       const newCandleMaker = {
