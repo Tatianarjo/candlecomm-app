@@ -37,9 +37,9 @@ export const CandleMakerList = () => {
                 <div className="candleMaker__name">
                   Name: {candleMaker.candle_name}
                 </div>
-                <div className="candleMaker__scent">
-                  Scent: {candleMaker.scent.fragrance}
-                </div>
+                {candleMaker.scents.map(scent => ( <div className="candleMaker__scent">
+                  Scent: {scent.fragrance}
+                </div>))} 
 
                 <div className="candleMaker__jar">
                   Jar Color: {candleMaker.jar_color.color}
