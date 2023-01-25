@@ -3,7 +3,11 @@
 
 CandleComm is the go to community for candle lovers and makers. Users create an account and creat their own scent of candles. Chandlers as we like to call our community of candle makers, select a mixture of scents, jar colors and a name of their candle. 
 
+![image](https://user-images.githubusercontent.com/81661286/214452958-0f4cfbc9-3aae-4911-a22d-7fc0c3cf95a6.png)
+
+
 Chandlers can then post their candle, delete or edit the candle.
+![candlecomm_1](https://user-images.githubusercontent.com/81661286/214452641-fac973ac-f427-4622-b047-187c50980640.png)
 
 
 ## Features
