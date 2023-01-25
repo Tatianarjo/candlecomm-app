@@ -1,3 +1,18 @@
+
+# CandleComm
+
+CandleComm is the go to community for candle lovers and makers. Users create an account and creat their own scent of candles. Chandlers as we like to call our community of candle makers, select a mixture of scents, jar colors and a name of their candle. 
+
+Chandlers can then post their candle, delete or edit the candle.
+
+
+## Features
+
+- Registration - Login/Logout
+- User/Chandler can create Candle
+- User/Chandler can  delete Candle
+- User/Chandler can choose more than one scent to create candle
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
