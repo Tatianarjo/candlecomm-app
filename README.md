@@ -63,6 +63,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
+To deploy this server project run
+
+For Server Side, you can run:
+
+```pipenv shell```
+
+```python3 manage.py runserver```
+
+In the project directory, you can run:
+
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
